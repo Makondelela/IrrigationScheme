@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.29" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IrrigationManagementSystem.Application\IrrigationManagementSystem.Application.csproj" />
+    <ProjectReference Include="..\IrrigationManagementSystem.Infrastructure\IrrigationManagementSystem.Infrastructure.csproj" />
+    <ProjectReference Include="..\IrrigationManagementSystem.Domain\IrrigationManagementSystem.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
