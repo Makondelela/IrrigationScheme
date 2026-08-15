@@ -2,21 +2,20 @@ trigger:
   - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: 'Mac-Local'   # or 'Default' — whatever you named your pool
 
 steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET 8'
+    inputs:
+      packageType: 'sdk'
+      version: '8.0.x'
 
-- task: UseDotNet@2
-  displayName: 'Install .NET 8'
-  inputs:
-    packageType: 'sdk'
-    version: '8.0.x'
+  - script: dotnet restore
+    displayName: 'Restore dependencies'
 
-- script: dotnet restore
-  displayName: 'Restore dependencies'
+  - script: dotnet build --configuration Release --no-restore
+    displayName: 'Build'
 
-- script: dotnet build --configuration Release --no-restore
-  displayName: 'Build'
-
-- script: dotnet test --configuration Release --no-build
-  displayName: 'Run tests'
+  - script: dotnet test --configuration Release --no-build
+    displayName: 'Run tests'
